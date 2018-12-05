@@ -238,9 +238,7 @@ pre_install(){
         echo -e "Latest version: ${red}${latest_ver}${plain}"
         echo -e "[${green}Info${plain}] Upgrade shadowsocks libev to latest version..."
         ps -ef | grep -v grep | grep -i "ss-server" > /dev/null 2>&1
-        if [ $? -eq 0 ]; then
-            /etc/init.d/shadowsocks stop
-        fi
+        
     elif [ ${status} -eq 2 ]; then
         get_latest_version
         echo -e "[${green}Info${plain}] Latest version: ${green}${shadowsocks_libev_ver}${plain}"
@@ -364,16 +362,7 @@ install_shadowsocks(){
     ./configure --disable-documentation
     make && make install
     if [ $? -eq 0 ]; then
-        chmod +x /etc/init.d/shadowsocks
-        chkconfig --add shadowsocks
-        chkconfig shadowsocks on
-        # Start shadowsocks
-        /etc/init.d/shadowsocks start
-        if [ $? -eq 0 ]; then
-            echo -e "[${green}Info${plain}] Shadowsocks-libev start success!"
-        else
-            echo -e "[${yellow}Warning${plain}] Shadowsocks-libev start failure!"
-        fi
+        
     else
         echo
         echo -e "[${red}Error${plain}] Shadowsocks-libev install failed. please visit https://teddysun.com/357.html and contact."
