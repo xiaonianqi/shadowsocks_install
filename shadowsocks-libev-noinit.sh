@@ -361,13 +361,6 @@ install_shadowsocks(){
     cd ${shadowsocks_libev_ver}
     ./configure --disable-documentation
     make && make install
-    if [ $? -eq 0 ]; then
-        
-    else
-        echo
-        echo -e "[${red}Error${plain}] Shadowsocks-libev install failed. please visit https://teddysun.com/357.html and contact."
-        exit 1
-    fi
 
     cd ${cur_dir}
     rm -rf ${shadowsocks_libev_ver} ${shadowsocks_libev_ver}.tar.gz
