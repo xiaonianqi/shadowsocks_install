@@ -111,16 +111,6 @@ check_version(){
     fi
 }
 
-print_info(){
-    clear
-    echo "#############################################################"
-    echo "# Install Shadowsocks-libev server for CentOS 6 or 7        #"
-    echo "# Intro:  https://teddysun.com/357.html                     #"
-    echo "# Author: Teddysun <i@teddysun.com>                         #"
-    echo "# Github: https://github.com/shadowsocks/shadowsocks-libev  #"
-    echo "#############################################################"
-    echo
-}
 
 # Check system
 check_sys(){
@@ -252,7 +242,6 @@ pre_install(){
             /etc/init.d/shadowsocks stop
         fi
     elif [ ${status} -eq 2 ]; then
-        print_info
         get_latest_version
         echo -e "[${green}Info${plain}] Latest version: ${green}${shadowsocks_libev_ver}${plain}"
         echo
@@ -410,7 +399,6 @@ install_shadowsocks_libev(){
 # Uninstall Shadowsocks-libev
 uninstall_shadowsocks_libev(){
     clear
-    print_info
     printf "Are you sure uninstall Shadowsocks-libev? (y/n)"
     printf "\n"
     read -p "(Default: n):" answer
